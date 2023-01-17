@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Form = () => {
+
+    const [value,setValue]=useState('')
   return (
     <div>
            <form>
