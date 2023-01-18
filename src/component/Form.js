@@ -6,8 +6,11 @@ const Form = () => {
   return (
     <div>
            <form>
-            <label>name:</label>
+
+            <label>email:</label>
             <input type={'text'} />
+            <label>password:</label>
+            <input type={'password'} />
             <button>submit</button>
            </form>
     </div>
