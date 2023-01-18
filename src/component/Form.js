@@ -6,6 +6,7 @@ const Form = () => {
   return (
     <div>
            <form>
+            <label>name:</label>
             <input type={'text'} />
             <button>submit</button>
            </form>
