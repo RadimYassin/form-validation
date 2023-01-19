@@ -1,41 +1,38 @@
-import React, { useState } from 'react'
-import { useForm} from 'react-hook-form';
-import { yupResolver} from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-   
-const schema=yup.object().shape({
-  firstname:yup.string().required(),
-  lasttname:yup.string().required(),
-  email:yup.string().email(),
-  age:yup.number().integer().positive().required(),
-  password:yup.string().min(6).max(15).required(),
-  comfirmPassword:yup.string().oneOf([yup.ref('password'),null]),
+import './style.css'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
+const schema = yup.object({
+  firstName: yup.string().required(),
+  age: yup.number().positive().integer().required(),
+  email:yup.string().email().required(),
+  pass:yup.string().max(15).min(6).required(),
+  comfirmPass:yup.string().required().oneOf([yup.ref('pass')]),
+}).required();
 
-})
-const Form = () => {
-  const {register,handleSubmit,formState:{errors}}=useForm({
-    resolver:yupResolver(schema)
+export default function Form() {
+  const { register, handleSubmit, formState:{ errors } } = useForm({
+    resolver: yupResolver(schema)
   });
-     
+  const onSubmit = data => console.log(data);
 
-  const SubmitData =data=>{
-
-  }
   return (
-
-           <form className='form' onSubmit={handleSubmit(SubmitData)}>
-              <input type={'text'} name="firstname" placeholder='first name ' ref={register}/>
-              <input type={'text'} name="lastname"  placeholder='last name '  ref={register}/>
-              <input type={'text'} name="email" placeholder='email'  ref={register}/>
-              <input type={'text'} name="age" placeholder='age '  ref={register}/>
-              <input type={'text'} name="password" placeholder='password'  ref={register}/>
-              <input type={'text'} name="comfirmPassword" placeholder='comfirmPassword'  ref={register}/>
-              <button>submit</button>
-      
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input placeholder='Firstname ' {...register("firstName")} />
+      <p>{errors.firstName?.message}</p>
+    
+      <input placeholder='age '  {...register("age")} />
+      <p>{errors.age?.message}</p>
+      <input placeholder='email ' {...register("email")} />
+      <p>{errors.email?.message}</p>
   
-          
-           </form>
-  )
-}
+      <input placeholder='passwoord' {...register("pass")} />
+      <p>{errors.pass?.message}</p>
+      <input placeholder='comfirm password' {...register("comfirmPass")} />
+      <p>{errors.comfirmPass && "password not comfrimed"}</p>
 
-export default Form
+
+      <input type="submit" />
+    </form>
+  );
+}
