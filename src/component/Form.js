@@ -9,11 +9,13 @@ const schema=yup.object().shape({
   email:yup.string().email(),
   age:yup.number().integer().positive().required(),
   password:yup.string().min(6).max(15).required(),
-  comfirmPassword:yup.string().oneOf([yup.ref('password')]),
+  comfirmPassword:yup.string().oneOf([yup.ref('password'),null]),
 
 })
 const Form = () => {
-
+  const {register,handleSubmit,formState:{errors}}=useForm({
+    resolver:yupResolver(schema)
+  });
   
   return (
 
