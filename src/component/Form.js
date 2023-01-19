@@ -4,16 +4,18 @@ const Form = () => {
 
     const [value,setValue]=useState('')
   return (
-    <div>
-           <form>
 
-            <label>email:</label>
-            <input type={'text'} />
-            <label>password:</label>
-            <input type={'password'} />
-            <button>submit</button>
+           <form className='form'>
+              <input type={'text'} name="firstname" placeholder='first name '/>
+              <input type={'text'} name="lastname"  placeholder='last name '/>
+              <input type={'text'} name="email" placeholder='email'/>
+              <input type={'text'} name="password" placeholder='password'/>
+              <input type={'text'} name="comfirmPassword" placeholder='comfirmPassword'/>
+              <button>submit</button>
+      
+  
+          
            </form>
-    </div>
   )
 }
 
