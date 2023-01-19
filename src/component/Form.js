@@ -16,16 +16,20 @@ const Form = () => {
   const {register,handleSubmit,formState:{errors}}=useForm({
     resolver:yupResolver(schema)
   });
-  
+     
+
+  const SubmitData =data=>{
+
+  }
   return (
 
-           <form className='form'>
-              <input type={'text'} name="firstname" placeholder='first name '/>
-              <input type={'text'} name="lastname"  placeholder='last name '/>
-              <input type={'text'} name="email" placeholder='email'/>
-              <input type={'text'} name="age" placeholder='age '/>
-              <input type={'text'} name="password" placeholder='password'/>
-              <input type={'text'} name="comfirmPassword" placeholder='comfirmPassword'/>
+           <form className='form' onSubmit={handleSubmit(SubmitData)}>
+              <input type={'text'} name="firstname" placeholder='first name ' ref={register}/>
+              <input type={'text'} name="lastname"  placeholder='last name '  ref={register}/>
+              <input type={'text'} name="email" placeholder='email'  ref={register}/>
+              <input type={'text'} name="age" placeholder='age '  ref={register}/>
+              <input type={'text'} name="password" placeholder='password'  ref={register}/>
+              <input type={'text'} name="comfirmPassword" placeholder='comfirmPassword'  ref={register}/>
               <button>submit</button>
       
   
