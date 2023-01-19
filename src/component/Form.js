@@ -2,16 +2,26 @@ import React, { useState } from 'react'
 import { useForm} from 'react-hook-form';
 import { yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+   
+const schema=yup.object().shape({
+  firstname:yup.string().required(),
+  lasttname:yup.string().required(),
+  email:yup.string().email(),
+  age:yup.number().integer().positive().required(),
+  password:yup.string().min(6).max(15).required(),
+  comfirmPassword:yup.string().oneOf([yup.ref('password')]),
 
+})
 const Form = () => {
 
-    const [value,setValue]=useState('')
+  
   return (
 
            <form className='form'>
               <input type={'text'} name="firstname" placeholder='first name '/>
               <input type={'text'} name="lastname"  placeholder='last name '/>
               <input type={'text'} name="email" placeholder='email'/>
+              <input type={'text'} name="age" placeholder='age '/>
               <input type={'text'} name="password" placeholder='password'/>
               <input type={'text'} name="comfirmPassword" placeholder='comfirmPassword'/>
               <button>submit</button>
