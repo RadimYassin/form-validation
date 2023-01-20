@@ -32,7 +32,7 @@ export default function Form() {
       <p>{errors.comfirmPass && "password not comfrimed"}</p>
 
 
-      <input type="submit" />
+      <button>submit</button>
     </form>
   );
 }
