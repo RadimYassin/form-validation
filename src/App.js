@@ -4,9 +4,9 @@ import './style.css'
 function App() {
   
   return (
-     <>
+    <section className='App'>
      <Form/>
-     </>
+     </section>
   );
 }
 
